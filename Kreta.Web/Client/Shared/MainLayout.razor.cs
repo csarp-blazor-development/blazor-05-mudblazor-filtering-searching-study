@@ -91,5 +91,13 @@ namespace Kreta.Web.Client.Shared
                 _currentTheme = _darkMudTheme;
             }
         }
+
+        private string GetThemeName()
+        {
+            if (_isCurrentLightTheme)
+                return "light";
+            else
+                return "dark";
+        }
     }
 }
