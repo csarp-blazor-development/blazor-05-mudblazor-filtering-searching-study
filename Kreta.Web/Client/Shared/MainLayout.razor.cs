@@ -72,5 +72,17 @@ namespace Kreta.Web.Client.Shared
                 }
             };
         }
+
+        private void SetCurrentTheme()
+        {
+            if (_isCurrentLightTheme)
+            {
+                _currentTheme = _lightMudTheme;
+            }
+            else
+            {
+                _currentTheme = _darkMudTheme;
+            }
+        }
     }
 }
