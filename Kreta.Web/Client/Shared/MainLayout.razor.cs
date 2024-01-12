@@ -103,5 +103,16 @@ namespace Kreta.Web.Client.Shared
             else
                 return "dark";
         }
+
+        private async Task ChangeThemeAsync()
+        {
+            _isCurrentLightTheme = !_isCurrentLightTheme;
+            SetCurrentTheme();
+
+            if (LocalStorage is not null)
+            {
+                await LocalStorage.SetItemAsStringAsync("theme", GetThemeName());
+            }
+        }
     }
 }
