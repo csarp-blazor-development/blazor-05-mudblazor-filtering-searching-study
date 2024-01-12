@@ -14,6 +14,13 @@ namespace Kreta.Web.Client.Shared
             _drawerOpen = !_drawerOpen;
         }
 
+        protected override Task OnInitializedAsync()
+        {
+            InitializeLightTheme();
+            InitializeDarkTheme();
+            SetCurrentTheme();
+            return base.OnInitializedAsync();
+        }
         private void InitializeDarkTheme()
         {
             _darkMudTheme = new MudTheme()
