@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Components;
 using MudBlazor;
+using Blazored.LocalStorage;
 
 namespace Kreta.Web.Client.Shared
 {
@@ -9,6 +11,8 @@ namespace Kreta.Web.Client.Shared
         private MudTheme _darkMudTheme = new MudTheme();
         private MudTheme _lightMudTheme = new MudTheme();
         private MudTheme _currentTheme = new MudTheme();
+
+        [Inject] public ILocalStorageService? LocalStorage { get; set; }
         private void DrawerToggle()
         {
             _drawerOpen = !_drawerOpen;
