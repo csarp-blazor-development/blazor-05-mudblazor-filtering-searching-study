@@ -18,12 +18,13 @@ namespace Kreta.Web.Client.Shared
             _drawerOpen = !_drawerOpen;
         }
 
-        protected override Task OnInitializedAsync()
+        protected async override Task OnInitializedAsync()
         {
+            await SetCurrentThemeFromLocalStorage();
             InitializeLightTheme();
             InitializeDarkTheme();
             SetCurrentTheme();
-            return base.OnInitializedAsync();
+            await base.OnInitializedAsync();
         }
         private void InitializeDarkTheme()
         {
@@ -113,6 +114,16 @@ namespace Kreta.Web.Client.Shared
             {
                 await LocalStorage.SetItemAsStringAsync("theme", GetThemeName());
             }
+        }
+
+        private async Task SetCurrentThemeFromLocalStorage()
+        {
+            string themeName = "light";
+            if ((LocalStorage is not null) && (await LocalStorage.ContainKeyAsync("theme")))
+            {
+                themeName = await LocalStorage.GetItemAsStringAsync("theme");
+            }
+            _isCurrentLightTheme = themeName == "light" ? true : false;
         }
     }
 }
