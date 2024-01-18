@@ -1,8 +1,32 @@
 ﻿@page "/scoolcitizens/student"
 @page "/scoolcitizens/student/index"
 
-<h3>StudentPage</h3>
+@using Kreta.Shared.Models
 
-@code {
+<MudText Typo="Typo.h5" Class="mb-4 mt-4">Iskolai diákjai</MudText>
+<MudTable ServerData="ReloadDataAsync"
+          T="Student"
+          Class="m-2"
+          Dense="true"
+          LoadingProgressColor="Color.Info">
 
-}
+    <HeaderContent>
+        <MudTh>Vezetéknév</MudTh>
+        <MudTh>Keresztnév</MudTh>
+        <MudTh>Születési idő</MudTh>
+        <MudTh>Évfolyam</MudTh>
+        <MudTh>Osztály</MudTh>
+        <MudTh>Képzés típusa</MudTh>
+    </HeaderContent>
+    <RowTemplate>
+        <MudTd DataLabel="Vezetéknév">@context.LastName</MudTd>
+            <MudTd DataLabel="Keresztnév">@context.FirstName</MudTd>
+            <MudTd DataLabel="Születési idő">@context.BirthsDay</MudTd>
+            <MudTd DataLabel="Évfolyam">@context.SchoolYear</MudTd>
+            <MudTd DataLabel="Osztály">@context.SchoolClass</MudTd>
+            <MudTd DataLabel="Képzés típusa">@context.EducationLevel</MudTd>
+            <MudIconButton Icon="@Icons.Material.Filled.Preview" Color="Color.Success"></MudIconButton>
+            <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Default"></MudIconButton>
+            <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error"></MudIconButton>
+     </RowTemplate>
+</MudTable>
