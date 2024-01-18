@@ -1,0 +1,7 @@
+﻿.mud-table-header {
+    background-color: #0078d2;
+}
+
+.mud-table-header .mud-table-cell {
+    color: white !important;
+}
