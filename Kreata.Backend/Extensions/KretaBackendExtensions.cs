@@ -14,7 +14,7 @@ namespace Kreata.Backend.Extensions
                  option.AddPolicy(name: "KretaCors",
                      policy =>
                      {
-                         policy.WithOrigins("https://localhost:7090/")
+                         policy.WithOrigins("https://localhost:7095")
                          .AllowAnyHeader()
                          .AllowAnyMethod();
                      }
