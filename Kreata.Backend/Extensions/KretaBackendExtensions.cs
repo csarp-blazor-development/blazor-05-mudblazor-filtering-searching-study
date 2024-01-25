@@ -1,4 +1,5 @@
 ﻿using Kreata.Backend.Context;
+using Kreata.Backend.ContextRepos;
 using Kreata.Backend.Repos;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,7 @@ namespace Kreata.Backend.Extensions
                  option.AddPolicy(name: "KretaCors",
                      policy =>
                      {
-                         policy.WithOrigins("https://localhost:7138")
+                         policy.WithOrigins("https://localhost:7090/")
                          .AllowAnyHeader()
                          .AllowAnyMethod();
                      }
@@ -23,27 +24,18 @@ namespace Kreata.Backend.Extensions
 
         public static void ConfigureInMemoryContext(this IServiceCollection services)
         {
-            string dbNameKretaContext = "Kreta" + Guid.NewGuid();
-            services.AddDbContext<KretaContext>
-            (
-                 options => options.UseInMemoryDatabase(databaseName: dbNameKretaContext),
-                 ServiceLifetime.Scoped,
-                 ServiceLifetime.Scoped
-            );
-
-
-            string dbNameInMemoryContext = "Kreta" + Guid.NewGuid();
-            services.AddDbContext<KretaInMemoryContext>
-            (
-                 options => options.UseInMemoryDatabase(databaseName: dbNameInMemoryContext),
-                 ServiceLifetime.Scoped,
-                 ServiceLifetime.Scoped
-            );
+            string dbName = "Kreta" + Guid.NewGuid();
+            services.AddDbContextFactory<KretaContext>(
+                options => options.UseInMemoryDatabase(databaseName: dbName)
+                );
+            services.AddDbContextFactory<KretaInMemoryContext>(
+                options => options.UseInMemoryDatabase(databaseName: dbName)
+                );
         }
 
         public static void ConfigureRepos(this IServiceCollection services) 
         { 
-            services.AddScoped<IStudentRepo, StudentRepo>();
+            services.AddScoped<IStudentRepo, StudentInMemoryRepo>();
         }
     }
 }

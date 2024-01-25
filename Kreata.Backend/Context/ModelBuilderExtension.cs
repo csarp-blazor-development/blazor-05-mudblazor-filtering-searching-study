@@ -29,6 +29,36 @@ namespace Kreata.Backend.Context
                     SchoolYear=10,
                     SchoolClass = SchoolClassType.ClassB,
                     EducationLevel="érettségi"
+                },
+                new Student
+                {
+                    Id=Guid.NewGuid(),
+                    FirstName="Hunor",
+                    LastName="Ugráló",
+                    BirthsDay=new DateTime(2020,2,11),
+                    SchoolYear=10,
+                    SchoolClass = SchoolClassType.ClassB,
+                    EducationLevel="érettségi"
+                },
+                new Student
+                {
+                    Id=Guid.NewGuid(),
+                    FirstName="Kati",
+                    LastName="Késő",
+                    BirthsDay=new DateTime(2019,2,11),
+                    SchoolYear=12,
+                    SchoolClass = SchoolClassType.ClassA,
+                    EducationLevel="érettségi"
+                },
+                new Student
+                {
+                    Id=Guid.NewGuid(),
+                    FirstName="Kenéz",
+                    LastName="Kísérletező",
+                    BirthsDay=new DateTime(2017,2,11),
+                    SchoolYear=14,
+                    SchoolClass = SchoolClassType.ClassA,
+                    EducationLevel="szakképzés"
                 }
             };
 
