@@ -18,6 +18,7 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 builder.Services.AddMudServices();
 
 // Kiegészítõ szolgáltatások
+builder.Services.ConfigureKretaViewModels();
 builder.Services.ConfigureKretaWebServices();
 builder.Services.ConfigureHttpCliens();
 
