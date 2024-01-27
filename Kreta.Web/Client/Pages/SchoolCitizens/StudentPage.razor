@@ -34,10 +34,10 @@
                           AdornmentIcon="@Icons.Material.Filled.Search"
                           IconSize="Size.Medium" />
             <MudPaper Outlined="false" MaxWidth="250px">
-                <MudNumericField T="uint" @bind-Value="@StudentViewModel.SearchedMinYear" Min="0" InvertMouseWheel="true" Label="Szűrés szűletési év elejére" Variant="Variant.Text" Class="mx-2 my-2" />
+                <MudNumericField T="uint" @bind-Value="@StudentViewModel.FileteredMinYear" Min="0" InvertMouseWheel="true" Label="Szűrés szűletési év elejére" Variant="Variant.Text" Class="mx-2 my-2" />
             </MudPaper>
             <MudPaper Outlined="false" MaxWidth="250px">
-                <MudNumericField T="uint" @bind-Value="@StudentViewModel.SearchedMaxYear" Min="0" InvertMouseWheel="true" Label="Szűrés szűletési év végére" Variant="Variant.Text" Class="mx-2 my-2" />
+                <MudNumericField T="uint" @bind-Value="@StudentViewModel.FilteredMaxYear" Min="0" InvertMouseWheel="true" Label="Szűrés szűletési év végére" Variant="Variant.Text" Class="mx-2 my-2" />
             </MudPaper>
             <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.FilterAlt" Color="Color.Primary" Class="mx-2">Szűrés</MudButton>
         }
