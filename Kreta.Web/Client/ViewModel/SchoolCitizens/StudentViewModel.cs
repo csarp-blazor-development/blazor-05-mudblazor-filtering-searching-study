@@ -1,6 +1,5 @@
 ﻿using Kreta.HttpService.Service;
 using Kreta.Shared.Models;
-using Microsoft.AspNetCore.Components;
 using MudBlazor;
 
 namespace Kreta.Web.Client.ViewModel.SchoolCitizens
@@ -9,8 +8,8 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
     {
         private IStudentService? _studentService;
         public string SerchedName { get; set; } = string.Empty;
-        public uint FileteredMinYear { get; set; } = 0;
-        public uint FilteredMaxYear { get;set; } = uint.MaxValue;
+        public uint FileteredMinBirthYear { get; set; } = 0;
+        public uint FilteredMaxBirthYear { get;set; } = uint.MaxValue;
 
         public StudentViewModel(IStudentService studentService)
         {
@@ -32,11 +31,17 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
             return new TableData<Student> { Items = new List<Student>() };
         }
 
-        private void SetFilteredMinMaxYear(List<Student> students)
+        public async Task SearchStudentByName(string name)
         {
-            FileteredMinYear = (uint) students.Select(student => student.BirthsDay.Year).Min();
-            FilteredMaxYear = (uint)students.Select(student => student.BirthsDay.Year).Max();
         }
 
+        public async Task FilterStudentByBirthYear()
+        {
+        }
+        private void SetFilteredMinMaxYear(List<Student> students)
+        {
+            FileteredMinBirthYear = (uint) students.Select(student => student.BirthsDay.Year).Min();
+            FilteredMaxBirthYear = (uint)students.Select(student => student.BirthsDay.Year).Max();
+        }
     }
 }

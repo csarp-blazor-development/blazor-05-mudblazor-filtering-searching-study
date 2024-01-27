@@ -19,27 +19,21 @@
     <ToolBarContent>
         <MudText Typo="Typo.h5" Class="my-4">Diákok adatai</MudText>
         <MudSpacer />
-        <MudTextField T="string" 
-            Placeholder="Keresés névrészlet alapján" 
-            Adornment="Adornment.Start"
-            AdornmentIcon="@Icons.Material.Filled.Search" 
-            IconSize="Size.Medium"
-        />
         @if (StudentViewModel is not null)
         {
             <MudTextField T="string"
-                          @bind-Value="@StudentViewModel.SerchedName"
+                          ValueChanged="@StudentViewModel.SearchStudentByName"
                           Placeholder="Keresés névrészlet alapján"
                           Adornment="Adornment.Start"
                           AdornmentIcon="@Icons.Material.Filled.Search"
                           IconSize="Size.Medium" />
             <MudPaper Outlined="false" MaxWidth="250px">
-                <MudNumericField T="uint" @bind-Value="@StudentViewModel.FileteredMinYear" Min="0" InvertMouseWheel="true" Label="Szűrés szűletési év elejére" Variant="Variant.Text" Class="mx-2 my-2" />
+                <MudNumericField T="uint" @bind-Value="@StudentViewModel.FileteredMinBirthYear" Min="0" InvertMouseWheel="true" Label="Szűrés szűletési év elejére" Variant="Variant.Text" Class="mx-2 my-2" />
             </MudPaper>
             <MudPaper Outlined="false" MaxWidth="250px">
-                <MudNumericField T="uint" @bind-Value="@StudentViewModel.FilteredMaxYear" Min="0" InvertMouseWheel="true" Label="Szűrés szűletési év végére" Variant="Variant.Text" Class="mx-2 my-2" />
+                <MudNumericField T="uint" @bind-Value="@StudentViewModel.FilteredMaxBirthYear" Min="0" InvertMouseWheel="true" Label="Szűrés szűletési év végére" Variant="Variant.Text" Class="mx-2 my-2" />
             </MudPaper>
-            <MudButton Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.FilterAlt" Color="Color.Primary" Class="mx-2">Szűrés</MudButton>
+            <MudButton OnClick="@StudentViewModel.FilterStudentByBirthYear" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.FilterAlt" Color="Color.Primary" Class="mx-2">Szűrés</MudButton>
         }
     </ToolBarContent>
     <HeaderContent>
