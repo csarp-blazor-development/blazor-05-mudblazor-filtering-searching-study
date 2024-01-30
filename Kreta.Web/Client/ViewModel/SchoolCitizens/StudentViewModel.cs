@@ -33,6 +33,8 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
 
         public async Task SearchStudentByName(string name)
         {
+            SerchedName = name;
+
         }
 
         public async Task FilterStudentByBirthYear()
