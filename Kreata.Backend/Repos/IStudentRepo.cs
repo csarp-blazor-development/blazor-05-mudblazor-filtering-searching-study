@@ -5,6 +5,6 @@ namespace Kreata.Backend.Repos
 {
     public interface IStudentRepo : IRepositoryBase<Student>
     {
-        public IQueryable<Student> GetStudents(StudentQueryParameters parameters);        
+        public IQueryable<Student> GetStudentsAsync(StudentQueryParameters parameters);        
     }
 }

@@ -13,7 +13,7 @@ namespace Kreata.Backend.Repos
         {
         }
 
-        public IQueryable<Student> GetStudents(StudentQueryParameters parameters)
+        public IQueryable<Student> GetStudentsAsync(StudentQueryParameters parameters)
         {
             IQueryable<Student> filteredStudent = FindByCondition(student => student.BirthsDay.Year >= parameters.MinYearOfBirth
                                                                && student.BirthsDay.Year <= parameters.MaxYearOfBirth

@@ -111,8 +111,8 @@ namespace Kreata.Backend.Controllers
             return BadRequest(response);
         }
 
-        [HttpGet("/queryparameters")]
-        public async Task<IActionResult> GetStudents([FromQuery] StudentQueryParametersDto dto)
+        [HttpPost("queryparameters")]
+        public async Task<IActionResult> GetStudents(StudentQueryParametersDto dto)
         {
             StudentQueryParameters parameters = dto.ToStudentQueryParameters();
             if (!parameters.ValidYearRange)
@@ -127,8 +127,9 @@ namespace Kreata.Backend.Controllers
                 }
                 else
                 {
-                    List<Student> result = await _studentRepo.GetStudents(parameters).ToListAsync();
-                    return Ok(result);
+                    List<Student> result = await _studentRepo.GetStudentsAsync(parameters).ToListAsync();
+                    List<StudentDto> resultDto = result.Select(studnet => studnet.ToStudentDto()).ToList();
+                    return Ok(resultDto);
                 }
             }
         }
