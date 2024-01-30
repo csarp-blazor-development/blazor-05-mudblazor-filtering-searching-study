@@ -7,6 +7,8 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
     public class StudentViewModel : IStudenViewModel
     {
         private IStudentService? _studentService;
+
+        public List<Student> StudentItems { get; set; } = new List<Student>();
         public string SerchedName { get; set; } = string.Empty;
         public uint FileteredMinBirthYear { get; set; } = 0;
         public uint FilteredMaxBirthYear { get;set; } = uint.MaxValue;
@@ -15,20 +17,13 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
         {
             _studentService = studentService;
         }
-        public async Task<TableData<Student>> InitializeAsync()
+        public async Task InitializeAsync()
         {
             if (_studentService is not null)
             {
-                List<Student> students = await _studentService.SelectAllStudent();
-                SetFilteredMinMaxYear(students);
-                TableData<Student> data = new()
-                {
-                    Items = students,
-                    TotalItems = students.Count,
-                };
-                return data;
+                StudentItems = await _studentService.SelectAllStudent();
+                SetFilteredMinMaxYear();
             }
-            return new TableData<Student> { Items = new List<Student>() };
         }
 
         public async Task SearchStudentByName(string name)
@@ -36,6 +31,7 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
             SerchedName = name;
             if (_studentService != null)
             {
+                StudentItems = await _studentService.SearchAndFilterStudents(this.ToStudentQueryParameters);
             }
         }
 
@@ -43,12 +39,13 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
         {
             if (_studentService != null)
             {
+                StudentItems = await _studentService.SearchAndFilterStudents(this.ToStudentQueryParameters);
             }
         }
-        private void SetFilteredMinMaxYear(List<Student> students)
+        private void SetFilteredMinMaxYear()
         {
-            FileteredMinBirthYear = (uint) students.Select(student => student.BirthsDay.Year).Min();
-            FilteredMaxBirthYear = (uint)students.Select(student => student.BirthsDay.Year).Max();
+            FileteredMinBirthYear = (uint) StudentItems.Select(student => student.BirthsDay.Year).Min();
+            FilteredMaxBirthYear = (uint) StudentItems.Select(student => student.BirthsDay.Year).Max();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Kreta.Shared.Dtos;
 using Kreta.Shared.Extensions;
 using Kreta.Shared.Models;
+using Kreta.Shared.Parameters;
 using Kreta.Shared.Responses;
 using Newtonsoft.Json;
 using System;
@@ -148,6 +149,9 @@ namespace Kreta.HttpService.Service
             return defaultResponse;
         }
 
-
+        public Task<List<Student>> SearchAndFilterStudents(Func<StudentQueryParameters> toStudentQueryParameters)
+        {
+            return null;
+        }
     }
 }

@@ -9,13 +9,13 @@ namespace Kreta.Web.Client.Pages.SchoolCitizens
     public partial class StudentPage
     {
         [Inject] IStudenViewModel? StudentViewModel { get; set; }
-        public async Task<TableData<Student>> ReloadDataAsync(TableState state)
+
+        protected async override Task OnInitializedAsync()
         {
             if (StudentViewModel is not null)
             {
-                return await StudentViewModel.InitializeAsync();
+                await StudentViewModel.InitializeAsync();
             }
-            return new TableData<Student> { Items = new List<Student>() };
         }
     }
 }
