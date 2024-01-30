@@ -149,7 +149,7 @@ namespace Kreta.HttpService.Service
             return defaultResponse;
         }
 
-        public Task<List<Student>> SearchAndFilterStudents(Func<StudentQueryParameters> toStudentQueryParameters)
+        public Task<List<Student>> SearchAndFilterStudents(StudentQueryParameters toStudentQueryParameters)
         {
             return null;
         }

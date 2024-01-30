@@ -31,7 +31,7 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
             SerchedName = name;
             if (_studentService != null)
             {
-                StudentItems = await _studentService.SearchAndFilterStudents(this.ToStudentQueryParameters);
+                StudentItems = await _studentService.SearchAndFilterStudents(this.ToStudentQueryParameters());
             }
         }
 
@@ -39,7 +39,7 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
         {
             if (_studentService != null)
             {
-                StudentItems = await _studentService.SearchAndFilterStudents(this.ToStudentQueryParameters);
+                StudentItems = await _studentService.SearchAndFilterStudents(this.ToStudentQueryParameters());
             }
         }
         private void SetFilteredMinMaxYear()
