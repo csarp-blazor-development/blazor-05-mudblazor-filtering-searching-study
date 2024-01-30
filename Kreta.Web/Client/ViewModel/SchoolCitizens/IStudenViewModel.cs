@@ -12,5 +12,6 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
         public Task InitializeAsync();
         public Task SearchStudentByName(string name);
         public Task FilterStudentByBirthYear();
+        public Task ResetFilterAndSerachParameter();
     }
 }

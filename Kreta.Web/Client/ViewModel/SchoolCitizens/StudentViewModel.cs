@@ -11,7 +11,7 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
         public List<Student> StudentItems { get; set; } = new List<Student>();
         public string SerchedName { get; set; } = string.Empty;
         public uint FileteredMinBirthYear { get; set; } = 0;
-        public uint FilteredMaxBirthYear { get;set; } = uint.MaxValue;
+        public uint FilteredMaxBirthYear { get; set; } = uint.MaxValue;
 
         public StudentViewModel(IStudentService studentService)
         {
@@ -35,6 +35,12 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
             }
         }
 
+        public async Task ResetFilterAndSerachParameter()
+        {
+            SerchedName = string.Empty;
+            SetFilteredMinMaxYear();
+            await InitializeAsync();
+        }
         public async Task FilterStudentByBirthYear()
         {
             if (_studentService != null)
