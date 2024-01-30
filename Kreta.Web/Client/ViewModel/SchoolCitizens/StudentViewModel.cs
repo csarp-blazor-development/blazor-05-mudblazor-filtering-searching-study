@@ -34,11 +34,16 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
         public async Task SearchStudentByName(string name)
         {
             SerchedName = name;
-
+            if (_studentService != null)
+            {
+            }
         }
 
         public async Task FilterStudentByBirthYear()
         {
+            if (_studentService != null)
+            {
+            }
         }
         private void SetFilteredMinMaxYear(List<Student> students)
         {
