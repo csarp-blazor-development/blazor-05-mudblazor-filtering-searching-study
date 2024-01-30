@@ -38,6 +38,7 @@ else
                 <MudNumericField T="uint" @bind-Value="@StudentViewModel.FilteredMaxBirthYear" Min="0" InvertMouseWheel="true" Label="Szűrés szűletési év végére" Variant="Variant.Text" Class="mx-2 my-2" />
             </MudPaper>
             <MudButton OnClick="@StudentViewModel.FilterStudentByBirthYear" Variant="Variant.Filled" EndIcon="@Icons.Material.Filled.FilterAlt" Color="Color.Primary" Class="mx-2">Szűrés</MudButton>
+            <MudButton EndIcon="@Icons.Material.Filled.LockReset" Variant="Variant.Filled" Color="Color.Primary" Class="mx-2">Vissza</MudButton>
         </ToolBarContent>
         <HeaderContent>
             <MudTh>Vezetéknév</MudTh>
