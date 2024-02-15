@@ -50,8 +50,11 @@ namespace Kreta.Web.Client.ViewModel.SchoolCitizens
         }
         private void SetFilteredMinMaxYear()
         {
-            FileteredMinBirthYear = (uint) StudentItems.Select(student => student.BirthsDay.Year).Min();
-            FilteredMaxBirthYear = (uint) StudentItems.Select(student => student.BirthsDay.Year).Max();
+            if (StudentItems.Any())
+            {
+                FileteredMinBirthYear = (uint)StudentItems.Select(student => student.BirthsDay.Year).Min();
+                FilteredMaxBirthYear = (uint)StudentItems.Select(student => student.BirthsDay.Year).Max();
+            }
         }
     }
 }
